@@ -21,12 +21,13 @@ public class Dictionary {
      */
     private void loadDictionary() {
         try (InputStream input = getClass().getClassLoader()
-                .getResourceAsStream("dictionary.properties")) {
+                .getResourceAsStream("dictionary.properties");
+             java.io.InputStreamReader reader = new java.io.InputStreamReader(input, "UTF-8")) {
             if (input == null) {
                 System.err.println("Unable to find dictionary.properties");
                 return;
             }
-            translations.load(input);
+            translations.load(reader);
         } catch (IOException e) {
             e.printStackTrace();
         }

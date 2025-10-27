@@ -17,10 +17,8 @@ import static org.junit.Assert.assertNotNull;
 /**
  * Selenium functional tests for the Translation Web Application.
  * Tests translation functionality with words that exist and don't exist in the dictionary.
- * NOTE: This test requires the application to be running on http://localhost:8080/translator-webapp
- * For automated testing with embedded server, use TranslatorSeleniumIT instead.
  */
-public class TranslatorSeleniumTest {
+public class TranslatorSeleniumIT {
     
     private WebDriver driver;
     private String baseUrl = "http://localhost:8080/translator-webapp";
