@@ -1,0 +1,140 @@
+ARQUIVOS DO PROJETO - Aplicação Web de Tradução MVC
+====================================================
+
+ARQUIVOS DE DOCUMENTAÇÃO
+------------------------
+- README.md                  # Documentação principal do projeto
+- DEPLOYMENT.md              # Instruções de compilação e deploy
+- SELENIUM_TESTS.md          # Documentação dos testes Selenium
+- MVC_ARCHITECTURE.md        # Explicação da arquitetura MVC
+- ENTREGA.md                 # Resumo da entrega do exercício
+- LICENSE                    # Licença MIT
+
+CONFIGURAÇÃO DO PROJETO
+-----------------------
+- pom.xml                    # Configuração Maven (dependências, build)
+- .gitignore                 # Arquivos a serem ignorados pelo Git
+
+CÓDIGO FONTE - MODEL (Modelo)
+------------------------------
+- src/main/java/br/ita/mvc/model/Dictionary.java
+  * Classe que gerencia o dicionário de traduções
+  * Carrega traduções do arquivo properties
+  * Método translate() para buscar traduções
+
+CÓDIGO FONTE - CONTROLLER (Controlador)
+----------------------------------------
+- src/main/java/br/ita/mvc/controller/TranslateServlet.java
+  * Servlet mapeado para /translate
+  * Recebe requisições HTTP POST
+  * Coordena Model e View
+
+CÓDIGO FONTE - VIEW (Visão)
+----------------------------
+- src/main/webapp/index.jsp
+  * Página principal com formulário de entrada
+  * Campo de texto para a palavra
+  * Botão "Traduzir"
+
+- src/main/webapp/WEB-INF/result.jsp
+  * Página de resultado
+  * Exibe palavra original e tradução
+  * Botão para nova tradução
+
+CONFIGURAÇÃO WEB
+----------------
+- src/main/webapp/WEB-INF/web.xml
+  * Configuração do servlet container
+  * Define welcome file (index.jsp)
+  * Filtro de encoding UTF-8
+
+DADOS
+-----
+- src/main/resources/dictionary.properties
+  * Arquivo com 25 pares palavra+tradução
+  * Formato: palavra_inglesa=tradução_portuguesa
+
+TESTES
+------
+- src/test/java/br/ita/mvc/test/TranslatorSeleniumTest.java
+  * 3 testes funcionais com Selenium
+  * Teste 1: palavra "hello" (existe)
+  * Teste 2: palavra "computer" (existe)
+  * Teste 3: palavra "programming" (não existe)
+
+ARQUIVO GERADO (após mvn package)
+----------------------------------
+- target/translator-webapp.war
+  * Arquivo WAR para deploy no Tomcat
+  * Contém toda a aplicação compilada
+
+TOTAL DE ARQUIVOS FONTE
+------------------------
+Java:     3 arquivos (1 Model, 1 Controller, 1 Test)
+JSP:      2 arquivos (Views)
+XML:      2 arquivos (pom.xml, web.xml)
+Props:    1 arquivo (dictionary.properties)
+Docs:     6 arquivos Markdown
+
+LINHAS DE CÓDIGO (aproximado)
+------------------------------
+Dictionary.java:           ~50 linhas
+TranslateServlet.java:     ~50 linhas
+TranslatorSeleniumTest:   ~140 linhas
+index.jsp:                 ~65 linhas
+result.jsp:                ~60 linhas
+web.xml:                   ~25 linhas
+--------------------------------------
+Total:                    ~390 linhas de código
+
+ESTRUTURA COMPLETA
+------------------
+.
+├── DEPLOYMENT.md
+├── ENTREGA.md
+├── LICENSE
+├── MVC_ARCHITECTURE.md
+├── README.md
+├── SELENIUM_TESTS.md
+├── pom.xml
+├── .gitignore
+└── src/
+    ├── main/
+    │   ├── java/
+    │   │   └── br/ita/mvc/
+    │   │       ├── model/
+    │   │       │   └── Dictionary.java
+    │   │       └── controller/
+    │   │           └── TranslateServlet.java
+    │   ├── resources/
+    │   │   └── dictionary.properties
+    │   └── webapp/
+    │       ├── index.jsp
+    │       └── WEB-INF/
+    │           ├── result.jsp
+    │           └── web.xml
+    └── test/
+        └── java/
+            └── br/ita/mvc/test/
+                └── TranslatorSeleniumTest.java
+
+COMANDOS ÚTEIS
+--------------
+Compilar:          mvn clean compile
+Gerar WAR:         mvn clean package
+Executar testes:   mvn test
+Limpar build:      mvn clean
+
+REQUISITOS ATENDIDOS
+--------------------
+✓ Aplicação web com campo texto e botão "Traduzir"
+✓ Processamento no servidor com Servlet
+✓ Retorno com página de resultado
+✓ Arquivo com traduções (25 pares)
+✓ Retorna palavra original se não encontrar tradução
+✓ Divisão em camadas MVC
+✓ Uso de classes Java, Servlets e JSP
+✓ Sem frameworks adicionais
+✓ 3 testes funcionais com Selenium
+✓ Projeto Maven (compatível Eclipse/NetBeans)
+✓ Documentação completa
