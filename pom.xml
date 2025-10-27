@@ -107,8 +107,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
-                    <!-- Skip unit tests by default, use failsafe for integration tests -->
-                    <skip>true</skip>
+                    <!-- Exclude Selenium tests from unit test phase -->
+                    <excludes>
+                        <exclude>**/TranslatorSelenium*.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
