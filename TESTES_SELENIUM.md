@@ -25,28 +25,34 @@ mvn clean verify
 Este comando irá:
 1. Compilar a aplicação
 2. Iniciar o servidor Jetty na porta 8080
-3. Executar os testes Selenium
+3. Executar os 3 testes Selenium (TranslatorSeleniumIT)
 4. Parar o servidor Jetty
 5. Gerar relatório de testes
 
+**Resultado esperado:**
+```
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+```
+
 ### Opção 2: Testes Manuais com Servidor Externo
 
-Se você preferir executar os testes contra um servidor já em execução:
+Se você preferir executar os testes contra um servidor já em execução (Tomcat ou outro):
 
-1. Primeiro, inicie o servidor (Tomcat ou Jetty):
+1. Primeiro, inicie o servidor:
    ```bash
-   # Com Tomcat
+   # Com Jetty Maven Plugin
+   mvn jetty:run
+   
+   # Ou com Tomcat
    mvn package
    # Copie target/translator-webapp.war para $TOMCAT_HOME/webapps/
    # Inicie o Tomcat
-   
-   # Ou com Jetty Maven Plugin
-   mvn jetty:run
    ```
 
-2. Em outro terminal, execute os testes:
+2. Em outro terminal, execute os testes manuais:
    ```bash
-   mvn test
+   mvn test -Dmaven.test.skip=false -Dtest=TranslatorSeleniumTest
    ```
 
 ## Pré-requisitos
